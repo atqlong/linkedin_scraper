@@ -10,6 +10,7 @@ def linkedin_companies_parser(url):
         try:
             headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'}
+            print "Fetching :",url
             response = requests.get(url, headers=headers)
             formatted_response = response.content.replace('<!--', '').replace('-->', '')
             doc = html.fromstring(formatted_response)
@@ -75,7 +76,7 @@ def linkedin_companies_parser(url):
             print "retrying :",url
  
 def readurls():
-    companyurls = ['https://www.linkedin.com/company/microsoft']
+    companyurls = ['https://www.linkedin.com/company/hcl-technologies']
     extracted_data = []
     for url in companyurls:
         extracted_data.append(linkedin_companies_parser(url))
